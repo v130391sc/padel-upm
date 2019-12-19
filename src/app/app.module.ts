@@ -10,6 +10,7 @@ import { ServiciosComponent } from './layouts/servicios/servicios.component';
 import { InstalacionesComponent } from './layouts/instalaciones/instalaciones.component';
 import { ReservasComponent } from './layouts/reservas/reservas.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

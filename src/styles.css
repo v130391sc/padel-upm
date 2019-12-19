@@ -1,1 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.bg-padel {
+  background-color: rgba(243, 252, 232, 1) !important;
+}
+
+.nav-img {
+  width: 60px;
+}
+
+#menu li a.active {
+  color: #375E25;
+  font-weight: bold;
+}
+
+#main-section {
+  width: 100%;
+  margin-top: 100px;
+}
+
+#main-header {
+  font-family: 'Concert One', cursive !important;
+  font-weight: bold;
+  font-size: 1.1rem !important;
+}
+
+.boton-form {
+  background-color: #375E25 !important;
+  color: #ffffff !important;
+}
+
+#main-footer {
+  width: 100%;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 1);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(243, 252, 232, 1) 14%, rgba(207, 236, 155, 1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(14%, rgba(243, 252, 232, 1)), color-stop(100%, rgba(207, 236, 155, 1)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(243, 252, 232, 1) 14%, rgba(207, 236, 155, 1) 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(243, 252, 232, 1) 14%, rgba(207, 236, 155, 1) 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(243, 252, 232, 1) 14%, rgba(207, 236, 155, 1) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(243, 252, 232, 1) 14%, rgba(207, 236, 155, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cfec9b', GradientType=0);
+}
+
+.center-img-vertical {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+
+  #mapa {
+    height: 375px !important;
+  }
+
+  #caja-leyenda {
+    position: relative !important;
+    width: 100%;
+  }
+}
+@media (max-width: 992px) {
+  #home-header {
+    margin-bottom: 30px;
+  }
+
+  * {
+    font-size: 12px;
+  }
+}

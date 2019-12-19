@@ -1,0 +1,21 @@
+.fa{
+  color: #000;
+  font-size: 50px !important;
+  line-height: 80px !important;
+}
+
+.circle{
+  border-radius: 50%;
+  background-color: #375E25;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.icono{
+  color: #ffffff !important;
+}
+
+#menu-servicios p{
+  font-size: 1.2rem;
+}

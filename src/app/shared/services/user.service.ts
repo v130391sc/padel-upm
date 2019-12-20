@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {LoginObject} from '../models/loginObject';
 import 'rxjs/add/operator/map';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Session} from "../models/session";
 import {StorageService} from "./storage.service";
+import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +29,18 @@ export class UserService {
       return res;
     });
   }
+
+  createUser(user: User) {
+    let body = JSON.stringify(user);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(this.padelUsersURL, body, { headers });
+  }
+
+  checkUserExists(username: string) {
+    const url = `${this.padelUsersURL}/${username}`;
+    return this.http.get(url, {observe: 'response'});
+  }
+
 }

@@ -18,23 +18,23 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['instalaciones']" id="instalaciones-tab" data-toggle="tab" role="tab" aria-controls="instalaciones" aria-selected="false">Instalaciones</a>
         </li>
-        <li id="menu-reservas" class="nav-item d-none">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Reservar</a>
+        <li *ngIf="this.isLogged()" id="menu-reservas" class="nav-item">
+          <a class="nav-link" [routerLink]="['reservas']" tabindex="-1" aria-disabled="true">Reservar</a>
         </li>
       </ul>
       <hr class="d-block d-lg-none">
       <ul class="nav navbar-nav my-2 my-lg-0 navbar-right">
-        <li id="menu-registro" class="nav-item mr-sm-2">
+        <li *ngIf="!this.isLogged()" id="menu-registro" class="nav-item mr-sm-2">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegistro"><i class="fas fa-user-plus"></i> Registro</a>
         </li>
-        <li id="menu-login" class="nav-item my-2 my-lg-0">
+        <li *ngIf="!this.isLogged()" id="menu-login" class="nav-item my-2 my-lg-0">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin"><i class="fas fa-sign-in-alt"></i> Login</a>
         </li>
-        <li id="menu-username" class="d-none nav-item my-2 my-lg-0">
-          <input type="text" readonly class="form-control-plaintext" id="menu-username-val" value="Hola, Anonymous">
+        <li *ngIf="this.isLogged()" id="menu-username" class="nav-item my-2 my-lg-0">
+          <input type="text" readonly class="form-control-plaintext" id="menu-username-val" value="Hola, {{this.username}}">
         </li>
-        <li id="menu-logout" class="d-none nav-item my-2 my-lg-0">
-          <a class="nav-link" href="#" id="menu-logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <li *ngIf="this.isLogged()" id="menu-logout" class="nav-item my-2 my-lg-0">
+          <a class="nav-link" (click)="logout()" id="menu-logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
       </ul>
     </div>

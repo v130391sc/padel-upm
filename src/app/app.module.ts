@@ -11,6 +11,7 @@ import { InstalacionesComponent } from './layouts/instalaciones/instalaciones.co
 import { ReservasComponent } from './layouts/reservas/reservas.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {ModalModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,14 @@ import {HttpClientModule} from '@angular/common/http';
     InstalacionesComponent,
     ReservasComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ModalModule.forRoot()
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

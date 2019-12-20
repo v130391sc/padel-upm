@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {User} from './shared/models/user';
 import {UserService} from './shared/services/user.service';
 import {LoginObject} from './shared/models/loginObject';
+import {ActivatedRoute, Router} from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,16 @@ import {LoginObject} from './shared/models/loginObject';
 })
 export class AppComponent{
   public loginForm: FormGroup;
-  public error:boolean = false;
+  public hayError:boolean = false;
   loginUser:LoginObject = {
     usuario:"",
     password:""
   }
 
   constructor(private formBuilder: FormBuilder,
-              private _userService: UserService) {
+              private _userService: UserService,
+              private router: Router,
+              private route: ActivatedRoute) {
     this.loginForm = new FormGroup({
       'username': new FormControl('', Validators.required),
       'password': new FormControl('', Validators.required)
@@ -29,12 +32,16 @@ export class AppComponent{
     if (this.loginForm.valid){
       this.loginUser.usuario = this.loginForm.controls.username.value;
       this.loginUser.password = this.loginForm.controls.password.value;
-      console.log(this.loginUser);
       this._userService.login(this.loginUser)
-        .subscribe(res=>{
+        .subscribe(res => {
+            this.hayError = false;
+            this.loginForm.reset();
+            $('#modalLogin').modal('hide');
+            this.router.navigate(['/']);
         }, error => {
           console.log(error);
-          error = true;
+          this.loginForm.reset();
+          this.hayError = true;
         });
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-servicios',
@@ -7,15 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiciosComponent implements OnInit {
 
-  color:string = '';
-  icon:string = '';
+  color: string = '';
+  icon: string = '';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  changeStyle($event){
+  changeStyle($event) {
     this.color = $event.type == 'mouseover' ? 'circle' : '';
     this.icon = $event.type == 'mouseover' ? 'icono' : '';
   }

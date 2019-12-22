@@ -1,9 +1,9 @@
 <script src="../js/servicios.js"></script>
 <h1 class="mb-5"><i class="fas fa-cubes fa-lg mr-3"></i>Servicios</h1>
-<div id="menu-servicios" class="row my-5">
-  <div class="col-12 col-md-4 text-center" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)">
+<div class="row my-5" id="menu-servicios">
+  <div (mouseout)="changeStyle($event)" (mouseover)="changeStyle($event)" class="col-12 col-md-4 text-center">
     <div [ngClass]="color">
-      <i class="fa fas fa-hands" [ngClass]="icon"></i>
+      <i [ngClass]="icon" class="fa fas fa-hands"></i>
     </div>
     <h2>Fisioterapeuta</h2>
     <p>Existe un servicio de fisioterapeuta para todos aquellos clientes que lo necesiten.</p>
@@ -20,7 +20,8 @@
       <i class="fa fas fa-shopping-basket"></i>
     </div>
     <h2>Tienda</h2>
-    <p>Disponemos de una tienda con artículos al mejor precio en la que puedes equiparte para dar tus mejores golpes.</p>
+    <p>Disponemos de una tienda con artículos al mejor precio en la que puedes equiparte para dar tus mejores
+      golpes.</p>
   </div>
   <div class="col-12 col-md-4 text-center">
     <div>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {StorageService} from './storage.service';
 import {Reserve} from '../models/reserve';
@@ -13,33 +13,34 @@ export class ReservasService {
   padelReservationsURL: string = 'http://fenw.etsisi.upm.es:10000/reservations';
 
   constructor(private http: HttpClient,
-              private _storageService: StorageService) {}
+              private _storageService: StorageService) {
+  }
 
   createReserve(reserve: Reserve) {
     let reserveAux: NewReserve = new NewReserve();
     reserveAux.courtid = reserve.courtId;
     reserveAux.rsvdatetime = reserve.rsvdateTime;
-    console.log(reserveAux)
+    console.log(reserveAux);
     let body = JSON.stringify(reserveAux);
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization' : this._storageService.getCurrentToken()
+      'Authorization': this._storageService.getCurrentToken()
     });
-    return this.http.post(this.padelReservationsURL, body, { headers, observe: 'response' });
+    return this.http.post(this.padelReservationsURL, body, {headers, observe: 'response'});
   }
 
-  getReservationsDoneByUser(){
+  getReservationsDoneByUser() {
     const url = `${this.padelReservationsURL}`;
     let headers = new HttpHeaders({
-      'Authorization' : this._storageService.getCurrentToken()
+      'Authorization': this._storageService.getCurrentToken()
     });
     return this.http.get<Reserve[]>(url, {headers, observe: 'response'});
   }
 
-  getAllReservationsByDate(date: number){
+  getAllReservationsByDate(date: number) {
     const url = `${this.padelReservationsURL}/${date}`;
     let headers = new HttpHeaders({
-      'Authorization' : this._storageService.getCurrentToken()
+      'Authorization': this._storageService.getCurrentToken()
     });
     return this.http.get<Reserve[]>(url, {headers, observe: 'response'});
   }
@@ -47,7 +48,7 @@ export class ReservasService {
   deleteReserveById(reserveId: number) {
     const url = `${this.padelReservationsURL}/${reserveId}`;
     let headers = new HttpHeaders({
-      'Authorization' : this._storageService.getCurrentToken()
+      'Authorization': this._storageService.getCurrentToken()
     });
     return this.http.delete(url, {headers, observe: 'response'});
   }

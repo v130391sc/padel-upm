@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {IndexComponent} from './index/index.component';
 import {ServiciosComponent} from './layouts/servicios/servicios.component';
 import {InstalacionesComponent} from './layouts/instalaciones/instalaciones.component';
-import {ReservasComponent} from "./layouts/reservas/reservas.component";
+import {ReservasComponent} from './layouts/reservas/reservas.component';
 
 
 const routes: Routes = [
@@ -29,4 +29,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

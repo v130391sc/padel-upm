@@ -4,37 +4,44 @@
       <img class="img-fluid nav-img" src="assets/img/EscUpm.gif">
       <span>Club de pádel - MiW</span>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Menú">
+    <button aria-controls="menu" aria-expanded="false" aria-label="Menú" class="navbar-toggler" data-target="#menu"
+            data-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav nav ml-2 ml-lg-4 mr-auto mt-2 mt-lg-0" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" [routerLink]="['/']" id="inicio-tab" data-toggle="tab" role="tab" aria-controls="inicio" aria-selected="true">Inicio</a>
+          <a [routerLink]="['/']" aria-controls="inicio" aria-selected="true" class="nav-link active" data-toggle="tab"
+             id="inicio-tab" role="tab">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['servicios']" id="servicios-tab" data-toggle="tab" role="tab" aria-controls="servicios" aria-selected="false">Servicios</a>
+          <a [routerLink]="['servicios']" aria-controls="servicios" aria-selected="false" class="nav-link" data-toggle="tab"
+             id="servicios-tab" role="tab">Servicios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['instalaciones']" id="instalaciones-tab" data-toggle="tab" role="tab" aria-controls="instalaciones" aria-selected="false">Instalaciones</a>
+          <a [routerLink]="['instalaciones']" aria-controls="instalaciones" aria-selected="false" class="nav-link" data-toggle="tab"
+             id="instalaciones-tab" role="tab">Instalaciones</a>
         </li>
-        <li *ngIf="this.isLogged()" id="menu-reservas" class="nav-item">
-          <a class="nav-link" [routerLink]="['reservas']" tabindex="-1" aria-disabled="true">Reservar</a>
+        <li *ngIf="this.isLogged()" class="nav-item" id="menu-reservas">
+          <a [routerLink]="['reservas']" aria-disabled="true" class="nav-link" tabindex="-1">Reservar</a>
         </li>
       </ul>
       <hr class="d-block d-lg-none">
       <ul class="nav navbar-nav my-2 my-lg-0 navbar-right">
-        <li *ngIf="!this.isLogged()" id="menu-registro" class="nav-item mr-sm-2">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegistro"><i class="fas fa-user-plus"></i> Registro</a>
+        <li *ngIf="!this.isLogged()" class="nav-item mr-sm-2" id="menu-registro">
+          <a class="nav-link" data-target="#modalRegistro" data-toggle="modal" href="#"><i class="fas fa-user-plus"></i>
+            Registro</a>
         </li>
-        <li *ngIf="!this.isLogged()" id="menu-login" class="nav-item my-2 my-lg-0">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <li *ngIf="!this.isLogged()" class="nav-item my-2 my-lg-0" id="menu-login">
+          <a class="nav-link" data-target="#modalLogin" data-toggle="modal" href="#"><i class="fas fa-sign-in-alt"></i>
+            Login</a>
         </li>
-        <li *ngIf="this.isLogged()" id="menu-username" class="nav-item my-2 my-lg-0">
-          <input type="text" readonly class="form-control-plaintext" id="menu-username-val" value="Hola, {{this.username}}">
+        <li *ngIf="this.isLogged()" class="nav-item my-2 my-lg-0" id="menu-username">
+          <input class="form-control-plaintext" id="menu-username-val" readonly type="text"
+                 value="Hola, {{this.username}}">
         </li>
-        <li *ngIf="this.isLogged()" id="menu-logout" class="nav-item my-2 my-lg-0">
-          <a class="nav-link" (click)="logout()" id="menu-logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <li *ngIf="this.isLogged()" class="nav-item my-2 my-lg-0" id="menu-logout">
+          <a (click)="logout()" class="nav-link" id="menu-logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
       </ul>
     </div>

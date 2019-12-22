@@ -1,12 +1,13 @@
 <h1 class="mb-4"><i class="fas fa-store fa-lg mr-3"></i>Reservas:</h1>
-<div id="caja-instalaciones" class="row p-2">
+<div class="row p-2" id="caja-instalaciones">
   <div class="form-group row w-100">
-    <label for="inputReserveDate" class="col-2 col-form-label">Fecha Reserva:</label>
+    <label class="col-2 col-form-label" for="inputReserveDate">Fecha Reserva:</label>
     <div class="col-10">
-      <input type="date" (change)="showReservationsByDate(inputfecha.value)" class="form-control" id="inputReserveDate" placeholder="yyyy-mm-dd" #inputfecha>
+      <input #inputfecha (change)="showReservationsByDate(inputfecha.value)" class="form-control" id="inputReserveDate"
+             placeholder="yyyy-mm-dd" type="date">
     </div>
   </div>
-  <table class="table" *ngIf="this.mostrarTabla">
+  <table *ngIf="this.mostrarTabla" class="table">
     <thead>
     <tr>
       <th scope="col">Pista</th>
@@ -18,28 +19,36 @@
       <th scope="row">P1</th>
       <td *ngFor="let reserve of this.court1Reserve">
         <ng-container *ngIf="reserve.rsvId != null">X</ng-container>
-        <button *ngIf="reserve.rsvId == null" (click)="this.submitReserve(reserve)" class="btn btn-outline-success btn-sm">Reservar</button>
+        <button (click)="this.submitReserve(reserve)" *ngIf="reserve.rsvId == null"
+                class="btn btn-outline-success btn-sm">Reservar
+        </button>
       </td>
     </tr>
     <tr>
       <th scope="row">P2</th>
       <td *ngFor="let reserve of this.court2Reserve">
         <ng-container *ngIf="reserve.rsvId != null">X</ng-container>
-        <button *ngIf="reserve.rsvId == null" (click)="this.submitReserve(reserve)" class="btn btn-outline-success btn-sm">Reservar</button>
+        <button (click)="this.submitReserve(reserve)" *ngIf="reserve.rsvId == null"
+                class="btn btn-outline-success btn-sm">Reservar
+        </button>
       </td>
     </tr>
     <tr>
       <th scope="row">P3</th>
       <td *ngFor="let reserve of this.court3Reserve">
         <ng-container *ngIf="reserve.rsvId != null">X</ng-container>
-        <button *ngIf="reserve.rsvId == null" (click)="this.submitReserve(reserve)" class="btn btn-outline-success btn-sm">Reservar</button>
+        <button (click)="this.submitReserve(reserve)" *ngIf="reserve.rsvId == null"
+                class="btn btn-outline-success btn-sm">Reservar
+        </button>
       </td>
     </tr>
     <tr>
       <th scope="row">P4</th>
       <td *ngFor="let reserve of this.court4Reserve">
         <ng-container *ngIf="reserve.rsvId != null">X</ng-container>
-        <button *ngIf="reserve.rsvId == null" (click)="this.submitReserve(reserve)" class="btn btn-outline-success btn-sm">Reservar</button>
+        <button (click)="this.submitReserve(reserve)" *ngIf="reserve.rsvId == null"
+                class="btn btn-outline-success btn-sm">Reservar
+        </button>
       </td>
     </tr>
     </tbody>
@@ -47,7 +56,8 @@
   <hr>
   <h2 class="mb-3">Mis reservas</h2>
   <ul class="list-group w-100">
-    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let reserve of this.userReservations">
+    <li *ngFor="let reserve of this.userReservations"
+        class="list-group-item d-flex justify-content-between align-items-center">
       Pista: {{reserve.courtId}} - Fecha: {{reserve.rsvday}} {{reserve.rsvtime}}
       <button (click)="this.deleteReserve(reserve)" class="btn btn-danger btn-sm">Borrar</button>
     </li>

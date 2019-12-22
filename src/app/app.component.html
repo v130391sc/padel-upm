@@ -13,66 +13,83 @@
   </div>
 </div>
 
-<div *ngIf="mostrarNotificacion" class="notificacion animated fadeIn fast alert" [ngClass]="{' alert-success': !hayErrorSignUp, 'alert-danger': hayErrorSignUp}" role="alert">
+<div *ngIf="mostrarNotificacion" [ngClass]="{' alert-success': !hayErrorSignUp, 'alert-danger': hayErrorSignUp}"
+     class="notificacion animated fadeIn fast alert" role="alert">
   <strong>{{this.textoNotificacion}}</strong>
 </div>
 
-<div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true" #modalSignUp>
+<div #modalSignUp aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="modalRegistro"
+     role="dialog" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Registro de usuario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form role="form" id="singInForm" [formGroup]="signUpForm" (ngSubmit)="submitSignUp()">
+        <form (ngSubmit)="submitSignUp()" [formGroup]="signUpForm" id="singInForm" role="form">
           <div class="form-group row">
-            <label for="inputUserSingUp" class="col-sm-2 col-form-label">Usuario:</label>
+            <label class="col-sm-2 col-form-label" for="inputUserSingUp">Usuario:</label>
             <div class="col-sm-10">
-              <input type="text" [ngClass]="{ 'is-invalid': !signUpForm.controls['username'].valid, 'is-valid': signUpForm.controls['username'].valid }" class="form-control" id="inputUserSingUp" placeholder="Identificador de usuario"
-                     formControlName="username" #nombreUsuario>
-              <div *ngIf="signUpForm.controls['username'].errors?.existe && !signUpForm.controls['username'].errors?.maxlength" class="form-control-feedback">
+              <input #nombreUsuario
+                     [ngClass]="{ 'is-invalid': !signUpForm.controls['username'].valid, 'is-valid': signUpForm.controls['username'].valid }"
+                     class="form-control" formControlName="username" id="inputUserSingUp"
+                     placeholder="Identificador de usuario" type="text">
+              <div
+                *ngIf="signUpForm.controls['username'].errors?.existe && !signUpForm.controls['username'].errors?.maxlength"
+                class="form-control-feedback">
                 El usuario '{{nombreUsuario.value}}' ya existe
               </div>
-              <div *ngIf="signUpForm.controls['username'].pending && !signUpForm.controls['username'].errors?.maxlength" class="form-control-feedback">
+              <div *ngIf="signUpForm.controls['username'].pending && !signUpForm.controls['username'].errors?.maxlength"
+                   class="form-control-feedback">
                 Verificando el usuario...
               </div>
-              <small *ngIf="signUpForm.controls['username'].errors?.maxlength" id="pswHelp" class="form-text text-muted">El nombre de usuario debe tener menos de 8 caracteres</small>
+              <small *ngIf="signUpForm.controls['username'].errors?.maxlength" class="form-text text-muted"
+                     id="pswHelp">El nombre de usuario debe tener menos de 8 caracteres</small>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputEmail" class="col-sm-2 col-form-label">Correo:</label>
+            <label class="col-sm-2 col-form-label" for="inputEmail">Correo:</label>
             <div class="col-sm-10">
-              <input type="email" [ngClass]="{ 'is-invalid': !signUpForm.controls['correo'].valid, 'is-valid': signUpForm.controls['correo'].valid }" class="form-control" id="inputEmail" placeholder="Email" formControlName="correo">
+              <input [ngClass]="{ 'is-invalid': !signUpForm.controls['correo'].valid, 'is-valid': signUpForm.controls['correo'].valid }"
+                     class="form-control"
+                     formControlName="correo" id="inputEmail" placeholder="Email" type="email">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputPwdSingUp" class="col-sm-2 col-form-label">Clave:</label>
+            <label class="col-sm-2 col-form-label" for="inputPwdSingUp">Clave:</label>
             <div class="col-sm-10">
-              <input type="password" [ngClass]="{ 'is-invalid': !signUpForm.controls['password1'].valid, 'is-valid': signUpForm.controls['password1'].valid }" class="form-control" id="inputPwdSingUp" placeholder="Clave" formControlName="password1">
-              <small *ngIf="signUpForm.controls['password1'].errors?.minlength" id="pswHelp" class="form-text text-muted">La contraseña debe tener entre más de 4 carácteres.</small>
+              <input [ngClass]="{ 'is-invalid': !signUpForm.controls['password1'].valid, 'is-valid': signUpForm.controls['password1'].valid }"
+                     class="form-control"
+                     formControlName="password1" id="inputPwdSingUp" placeholder="Clave" type="password">
+              <small *ngIf="signUpForm.controls['password1'].errors?.minlength" class="form-text text-muted"
+                     id="pswHelp">La contraseña debe tener entre más de 4 carácteres.</small>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputRepPwd" class="col-sm-2 col-form-label">Repita la clave:</label>
+            <label class="col-sm-2 col-form-label" for="inputRepPwd">Repita la clave:</label>
             <div class="col-sm-10">
-              <input type="password" [ngClass]="{ 'is-invalid': !signUpForm.controls['password2'].valid, 'is-valid': signUpForm.controls['password2'].valid }" class="form-control" id="inputRepPwd" placeholder="Repita la clave" formControlName="password2">
+              <input [ngClass]="{ 'is-invalid': !signUpForm.controls['password2'].valid, 'is-valid': signUpForm.controls['password2'].valid }"
+                     class="form-control"
+                     formControlName="password2" id="inputRepPwd" placeholder="Repita la clave" type="password">
               <div *ngIf="signUpForm.controls['password2'].errors?.noiguales" class="form-control-feedback">
                 Las contraseñas no coinciden
               </div>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputBirthDate" class="col-sm-2 col-form-label">Fecha de nacimiento:</label>
+            <label class="col-sm-2 col-form-label" for="inputBirthDate">Fecha de nacimiento:</label>
             <div class="col-sm-10">
-              <input type="date" [ngClass]="{ 'is-invalid': !signUpForm.controls['fechaN'].valid, 'is-valid': signUpForm.controls['fechaN'].valid }" class="form-control" id="inputBirthDate" placeholder="yyyy-mm-dd" formControlName="fechaN">
+              <input [ngClass]="{ 'is-invalid': !signUpForm.controls['fechaN'].valid, 'is-valid': signUpForm.controls['fechaN'].valid }"
+                     class="form-control"
+                     formControlName="fechaN" id="inputBirthDate" placeholder="yyyy-mm-dd" type="date">
             </div>
           </div>
           <div class="mt-3" style="text-align: center;">
-            <input type="submit" [disabled]="!signUpForm.valid" (click)="cerrarModal(modalSignUp)" id="boton-registro" class="boton-form btn" value="Regístrame">
+            <input (click)="cerrarModal(modalSignUp)" [disabled]="!signUpForm.valid" class="boton-form btn" id="boton-registro"
+                   type="submit" value="Regístrame">
           </div>
         </form>
       </div>
@@ -80,36 +97,39 @@
   </div>
 </div>
 
-<div class="modal fade" id="modalLogin" bsModal #modalLogin="bs-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div #modalLogin="bs-modal" aria-hidden="true" aria-labelledby="exampleModalLabel" bsModal class="modal fade" id="modalLogin"
+     role="dialog"
+     tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Login</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form id="loginForm" class="was-validated" name="loginForm" role="form" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+        <form (ngSubmit)="submitLogin()" [formGroup]="loginForm" class="was-validated" id="loginForm" name="loginForm"
+              role="form">
           <div class="form-group row">
-            <label for="inputUserSingIn" class="col-sm-2 col-form-label">Usuario:</label>
+            <label class="col-sm-2 col-form-label" for="inputUserSingIn">Usuario:</label>
             <div class="col-sm-10">
-              <input type="text" formControlName="username" name="username" class="form-control" id="inputUserSingIn"
-                     placeholder="Identificador de usuario" required>
+              <input class="form-control" formControlName="username" id="inputUserSingIn" name="username" placeholder="Identificador de usuario"
+                     required type="text">
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="inputPwdSingIn" class="col-sm-2 col-form-label">Clave:</label>
+            <label class="col-sm-2 col-form-label" for="inputPwdSingIn">Clave:</label>
             <div class="col-sm-10">
-              <input type="password" formControlName="password" name="password" class="form-control" id="inputPwdSingIn" placeholder="Clave"
-                     required>
+              <input class="form-control" formControlName="password" id="inputPwdSingIn" name="password" placeholder="Clave"
+                     required
+                     type="password">
               <div *ngIf="this.hayErrorLogin" class="invalid-feedback">Usuario y/o contraseña erróneos</div>
             </div>
           </div>
           <div class="mt-3" style="text-align: center;">
-            <button type="submit" id="boton-login" class="boton-form btn"> Entrar</button>
+            <button class="boton-form btn" id="boton-login" type="submit"> Entrar</button>
           </div>
         </form>
       </div>

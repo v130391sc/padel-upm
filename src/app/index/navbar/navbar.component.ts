@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {StorageService} from "../../shared/services/storage.service";
+import {Component, OnInit} from '@angular/core';
+import {StorageService} from '../../shared/services/storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,19 +8,20 @@ import {StorageService} from "../../shared/services/storage.service";
 })
 export class NavbarComponent implements OnInit {
 
-  username:string = 'Anonymous';
+  username: string = 'Anonymous';
 
-  constructor(private _storageService: StorageService) { }
+  constructor(private _storageService: StorageService) {
+  }
 
   ngOnInit() {
   }
 
-  isLogged(): boolean{
+  isLogged(): boolean {
     this.username = this._storageService.getCurrentUser();
     return this._storageService.isAuthenticated();
   }
 
-  logout(): void{
+  logout(): void {
     this.username = 'Anonymous';
     this._storageService.logout();
   }

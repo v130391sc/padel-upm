@@ -71,6 +71,7 @@ body {
     width: 100%;
   }
 }
+
 @media (max-width: 992px) {
   #home-header {
     margin-bottom: 30px;

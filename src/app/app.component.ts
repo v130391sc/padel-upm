@@ -5,6 +5,7 @@ import {LoginObject} from './shared/models/loginObject';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from "./shared/models/user";
 import {Observable} from "rxjs";
+import {parseDate} from 'ngx-bootstrap';
 declare var $: any;
 
 @Component({
@@ -39,7 +40,7 @@ export class AppComponent{
       'password': new FormControl('', Validators.required)
     });
     this.signUpForm = new FormGroup({
-      'username': new FormControl('', [Validators.required], this.existeUsuario.bind(this)  ),
+      'username': new FormControl('', [Validators.required, Validators.maxLength(8)], this.existeUsuario.bind(this)  ),
       'correo': new FormControl('',   [Validators.required,
         Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$')
       ]),
@@ -76,7 +77,14 @@ export class AppComponent{
     this.usuario.username = this.signUpForm.controls['username'].value;
     this.usuario.password = this.signUpForm.controls['password1'].value;
     this.usuario.email = this.signUpForm.controls['correo'].value;
-    // this.usuario.birthdate = this.signUpForm.controls['fechaN'].value;
+    let fecha = this.signUpForm.controls['fechaN'].value;
+    if(fecha != null) {
+      console.log(fecha);
+      let date: Date = parseDate(fecha);
+      this.usuario.birthdate = date.getTime();
+      console.log(date.getTime());
+    }
+    console.log(this.usuario);
     this._userService.createUser(this.usuario).subscribe(resp => {
       this.hayErrorSignUp = false;
       this.textoNotificacion = `El usuario ${this.usuario.username} ha sido añadido con éxito`;
